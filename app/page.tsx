@@ -687,7 +687,7 @@ function Navbar({
                 <img
                   src="/cmsclogo.jpg" // make sure this PNG is in your public folder
                   alt="CMSC Alumni Logo"
-                  className="w-full h-full object-contain"
+                  className="h-[20px] sm:h-[22px] w-auto object-contain"
                 />
             </div>
             <span className="text-lg sm:text-xl font-semibold tracking-tight">CMSC ALUMNI</span>
