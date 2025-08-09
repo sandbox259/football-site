@@ -14,6 +14,7 @@ interface Team {
   name: string
   color: string
   icon: string
+  logo: string
   hoverColor: string
   glowColor: string
   category: "girls" | "juniors" | "seniors"
@@ -66,6 +67,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-purple-600/20 hover:to-purple-500/20 hover:border-purple-600/50",
     glowColor: "hover:shadow-purple-600/25",
     category: "girls",
+    logo: "/strongertogether.jpg"
   },
   {
     id: "cannine-warriors-girls",
@@ -75,6 +77,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-purple-500/20 hover:to-purple-400/20 hover:border-purple-500/50",
     glowColor: "hover:shadow-purple-500/25",
     category: "girls",
+    logo: "/caninelogo.jpg",
   },
   // Juniors Category
   {
@@ -85,6 +88,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-blue-600/20 hover:to-blue-500/20 hover:border-blue-600/50",
     glowColor: "hover:shadow-blue-600/25",
     category: "juniors",
+    logo: "/caninelogo.jpg",
   },
   {
     id: "huma-hammers",
@@ -94,6 +98,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-blue-500/20 hover:to-blue-400/20 hover:border-blue-500/50",
     glowColor: "hover:shadow-blue-500/25",
     category: "juniors",
+    logo: "/Hammerslogo.jpg"
   },
   {
     id: "munshi-warriors",
@@ -103,6 +108,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-blue-700/20 hover:to-blue-600/20 hover:border-blue-700/50",
     glowColor: "hover:shadow-blue-700/25",
     category: "juniors",
+    logo: "/munshiwarriors.jpg"
   },
   {
     id: "united-manchester",
@@ -112,6 +118,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-blue-800/20 hover:to-blue-700/20 hover:border-blue-800/50",
     glowColor: "hover:shadow-blue-800/25",
     category: "juniors",
+    logo: "/unitedlogo.jpg"
   },
     {
     id: "united-cola",
@@ -121,6 +128,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-blue-900/20 hover:to-blue-800/20 hover:border-blue-900/50",
     glowColor: "hover:shadow-blue-900/25",
     category: "juniors",
+    logo: "/oxycola.jpg"
   },
 
   // Seniors Category
@@ -132,6 +140,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-red-600/20 hover:to-red-500/20 hover:border-red-600/50",
     glowColor: "hover:shadow-red-600/25",
     category: "seniors",
+    logo: "/caninelogo.jpg",
   },
   {
     id: "stronger-together-seniors",
@@ -141,6 +150,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-red-500/20 hover:to-red-400/20 hover:border-red-500/50",
     glowColor: "hover:shadow-red-500/25",
     category: "seniors",
+    logo: "/strongertogether.jpg"
   },
   {
     id: "hookah-world",
@@ -150,6 +160,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-red-700/20 hover:to-red-600/20 hover:border-red-700/50",
     glowColor: "hover:shadow-red-700/25",
     category: "seniors",
+    logo: "/hookahlogo.jpg"
   },
   {
     id: "lights-light",
@@ -159,6 +170,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-red-800/20 hover:to-red-700/20 hover:border-red-800/50",
     glowColor: "hover:shadow-red-800/25",
     category: "seniors",
+    logo: "light&lightlogo.jpg"
   },
   {
     id: "forever-victorians-94",
@@ -168,6 +180,7 @@ const TEAMS: Team[] = [
     hoverColor: "hover:bg-gradient-to-br hover:from-red-900/20 hover:to-red-800/20 hover:border-red-900/50",
     glowColor: "hover:shadow-red-900/25",
     category: "seniors",
+    logo: "victorianslogo.jpg"
   },
 ]
 
@@ -682,15 +695,16 @@ function Navbar({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14 sm:h-16">
-          <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <img
-                  src="/cmsclogo.jpg" // make sure this PNG is in your public folder
-                  alt="CMSC Alumni Logo"
-                  className="h-[20px] sm:h-[22px] w-auto object-contain"
-                />
-            </div>
-            <span className="text-lg sm:text-xl font-semibold tracking-tight">CMSC ALUMNI</span>
+          {/* Logo (fixed-width container for alignment) */}
+          <div className="flex items-center" style={{ width: "180px" }}>
+            <Image
+              src="/cmsclogo.jpg"
+              alt="CMSC Alumni Logo"
+              width={160}
+              height={40}
+              className="h-6 sm:h-8 w-auto object-contain"
+              priority
+            />
           </div>
 
           {/* Desktop Menu */}
@@ -924,13 +938,15 @@ function Teams({
               <CardHeader className="text-center p-6">
                 <div
                   className={cn(
-                    "w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl sm:text-3xl",
-                    "group-hover:scale-110 transition-transform duration-500 shadow-lg team-icon-glow",
-                    team.color,
+                    "w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg",
+                    team.glowColor
                   )}
-                  aria-hidden="true"
                 >
-                  {team.icon}
+                  <img
+                    src={team.logo}
+                    alt={`${team.name} logo`}
+                    className="max-w-full max-h-full object-contain drop-shadow-lg"
+                  />
                 </div>
                 <CardTitle className="text-lg sm:text-xl font-semibold text-white group-hover:text-white/90 transition-colors duration-300 tracking-wide leading-tight">
                   {team.name}
