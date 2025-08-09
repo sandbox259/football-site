@@ -684,7 +684,11 @@ function Navbar({
         <div className="flex items-center justify-between h-14 sm:h-16">
           <div className="flex items-center space-x-2 sm:space-x-3">
             <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-              <Trophy className="h-3 w-3 sm:h-5 sm:w-5 text-white" aria-hidden="true" />
+                <img
+                  src="/cmsclogo.jpg" // make sure this PNG is in your public folder
+                  alt="CMSC Alumni Logo"
+                  className="w-full h-full object-contain"
+                />
             </div>
             <span className="text-lg sm:text-xl font-semibold tracking-tight">CMSC ALUMNI</span>
           </div>
