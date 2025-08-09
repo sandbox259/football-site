@@ -72,9 +72,14 @@
 /* Enhanced smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* Account for fixed navbar */
+  scroll-padding-top: 2rem; /* default: mobile navbar height */
 }
 
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 4rem; /* sm and above: desktop navbar height */
+  }
+}
 /* Prevent scroll bounce on mobile */
 body {
   overscroll-behavior: none;

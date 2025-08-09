@@ -22,7 +22,7 @@ interface Team {
 
 interface Dignitary {
   id: string
-  name: string
+  logo : string
   title: string
 }
 
@@ -243,7 +243,6 @@ const TEAM_PLAYERS: Record<string, string[]> = {
   ],
    "cannine-warriors-seniors": [
     "Abdullah Mandviwala - Captain",
-    "Zaid Memon",
     "Aamir Patel",
     "Manjoorali A.H Memon",
     "Rahil Poonawala",
@@ -300,64 +299,44 @@ const TEAM_PLAYERS: Record<string, string[]> = {
 
 const DIGNITARIES: Dignitary[] = [
   {
-    id: "oxy-owner",
-    name: "Usman Arbani",
-    title: "Owner of Oxy Cola United",
+    id: "aashiyaana",
+    logo: "/aashiyaanalogo.jpg",
+    title: "Aashiyana Villas",
   },
   {
-    id: "oxy-coach",
-    name: "Anas Bhujwala",
-    title: "Coach of Oxy Cola United",
+    id: "Huma",
+    logo: "/Humalogo.jpg",
+    title: "Huma Caterers",
   },
   {
-    id: "huma-owner",
-    name: "Ibrahim Patel - Danish",
-    title: "Owner of Huma Hammers",
+    id: "sarjif",
+    logo: "/sarjiflogo.jpg",
+    title: "Al-Qaswa Travels",
   },
   {
-    id: "huma-coach",
-    name: "Moin Junani",
-    title: "Coach of Huma Hammers",
+    id: "shahidurbar",
+    logo: "/shahidurbar.jpg",
+    title: "Shahi Durbar",
   },
   {
-    id: "munshi-owner",
-    name: "Abid Munshi",
-    title: "Owner of Munshi Warriors",
+    id: "oxycola",
+    logo: "/oxycola.jpg",
+    title: "Oxy-Cola",
   },
   {
-    id: "munshi-coach",
-    name: "Atif Munshi",
-    title: "Coach of Munshi Warriors",
+    id: "sigdi",
+    logo: "sigdirest.jpg",
+    title: "Sigdi Restaurant",
   },
   {
-    id: "manchester-owner",
-    name: "Fahim Suthriwala",
-    title: "Owner of FC United Manchester",
+    id: "prize",
+    logo: "prizesponsor.jpg",
+    title: "Prize Sponsor",
   },
   {
-    id: "canine-owner",
-    name: "Abdullah Mandviwala",
-    title: "Coach of FC Canine United",
-  },
-  {
-    id: "hookah-owner",
-    name: "Huzaifa Merchant",
-    title: "Owner of Hookah World",
-  },
-  {
-    id: "light-owner",
-    name: "Mushtaque Vilayti",
-    title: "Owner of Lights & Light",
-  },
-  {
-    id: "forever-owner",
-    name: "Abubaker Memon",
-    title: "Owner of Forever Victorian 94",
-  },
-  {
-    id: "stronger-owner",
-    name: "Imraan Kapadia",
-    title: "Owner of Stronger Together",
+    id: "mithiyaj",
+    logo: "Mithiyajlogo.jpg",
+    title: "Mithiyaaj",
   },
   // Add more as needed
 ]
@@ -1005,7 +984,11 @@ function Teams({
   )
 }
 
-function Dignitaries({ dignitaries }: { dignitaries: { id: string; name: string; title: string }[] }) {
+function Dignitaries({
+  dignitaries,
+}: {
+  dignitaries: { id: string; logo: string; title: string }[];
+}) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.2 });
 
   return (
@@ -1020,10 +1003,10 @@ function Dignitaries({ dignitaries }: { dignitaries: { id: string; name: string;
     >
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tighter bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-          Team Management.
+          Event Sponsors.
         </h2>
         <p className="text-base sm:text-lg md:text-xl font-light text-white/60 max-w-3xl mx-auto leading-relaxed">
-          Owners and Coaches of the competing teams.
+          Sponsors of the Tournament.
         </p>
       </div>
 
@@ -1039,11 +1022,15 @@ function Dignitaries({ dignitaries }: { dignitaries: { id: string; name: string;
                 "focus-within:ring-2 focus-within:ring-purple-500"
               )}
             >
-              <CardHeader className="text-center p-8">
-                <CardTitle className="text-xl font-semibold text-white group-hover:text-purple-200 transition-colors duration-300 tracking-wide mb-2">
-                  {dignitary.name}
-                </CardTitle>
-              </CardHeader>
+              <CardHeader className="p-6 flex justify-center items-center">
+              <div className="flex items-center justify-center w-full h-40 overflow-hidden">
+                <img
+                  src={dignitary.logo}
+                  alt={dignitary.title}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+            </CardHeader>
               <CardContent className="text-center pb-8">
                 <Badge
                   variant="secondary"
@@ -1060,6 +1047,62 @@ function Dignitaries({ dignitaries }: { dignitaries: { id: string; name: string;
   );
 }
 
+function Organizers() {
+  const { ref, isVisible } = useIntersectionObserver({ threshold: 0.2 });
+
+  return (
+    <section
+      id="organizers"
+      ref={ref}
+      className={cn(
+        // Yellow theme background
+        "py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto",
+        "bg-gradient-to-br from-yellow-900/20 to-black/40",
+        // Make sure children can overflow (prevents descender clipping)
+        "overflow-visible",
+        "transition-all duration-1000 ease-out",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+      )}
+    >
+      {/* Title */}
+      <div className="text-center mb-8 sm:mb-12 overflow-visible">
+        <h2
+          className="relative z-10 text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tighter
+                     bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent
+                     leading-[1.18] pb-1"
+        >
+          Organizers.
+        </h2>
+
+        <p className="text-base sm:text-lg md:text-xl font-light text-white/70 max-w-3xl mx-auto leading-relaxed">
+          Meet the team behind the tournament.
+        </p>
+      </div>
+
+      {/* Single Card */}
+      <div className="flex justify-center mt-2">
+        <Card
+          className={cn(
+            "bg-gray-900/30 border-white/10 hover:border-yellow-500/30",
+            "hover:bg-gradient-to-br hover:from-yellow-500/10 hover:to-yellow-300/10",
+            "transition-all duration-500 hover:scale-105 backdrop-blur-sm",
+            "focus-within:ring-2 focus-within:ring-yellow-500"
+          )}
+        >
+          <CardHeader className="p-6 flex justify-center items-center overflow-visible">
+            <div className="flex items-center justify-center w-full max-w-lg overflow-visible">
+              <img
+                src="/organizers.jpg" // Replace with your image path in public/
+                alt="Organizers"
+                className="max-w-full h-auto object-contain"
+              />
+            </div>
+          </CardHeader>
+        </Card>
+      </div>
+    </section>
+  );
+}
 
 function LiveUpdates({ updates }: { updates: LiveUpdate[] }) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.2 })
@@ -1174,7 +1217,7 @@ function Footer() {
           <div className="text-center">
             <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
             <p className="text-white/60">Abubaker Dadani: 9819532826</p>
-            <p className="text-white/60">Samad Lakdawala: 9867660772</p>
+            <p className="text-white/60">Abdus Samad Lakdawala: 9867660772</p>
           </div>
           <div className="text-center">
             <h3 className="text-lg font-semibold text-white mb-4">Location</h3>
@@ -1329,6 +1372,8 @@ export default function FootballTournament() {
         <Teams teams={TEAMS} teamPlayers={TEAM_PLAYERS} />
 
         <Dignitaries dignitaries={DIGNITARIES} />
+
+        <Organizers />
 
         <LiveUpdates updates={LIVE_UPDATES} />
 
