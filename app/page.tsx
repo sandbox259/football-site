@@ -597,7 +597,7 @@ function TeamModal({
                 {team.icon}
               </span>
             </div>
-            <span className="leading-tight min-w-0 truncate">{team.name} - Roster</span>
+            <span className="leading-tight min-w-0 truncate">{team.name}</span>
           </DialogTitle>
         </DialogHeader>
 
