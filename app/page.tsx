@@ -342,7 +342,7 @@ const LIVE_UPDATES: LiveUpdate[] = [
   {
     id: "update-1",
     time: "19:30",
-    update: "Matches starting soon!",
+    update: "Reporting time is 2pm!",
     type: "news",
   },
 ]
@@ -350,7 +350,7 @@ const LIVE_UPDATES: LiveUpdate[] = [
 const NAV_ITEMS: NavItem[] = [
   { name: "Home", section: "home", href: "#home" },
   { name: "Teams", section: "teams", href: "#teams" },
-  { name: "Schedule", section: "schedule", href: "#schedule" },
+  { name: "Live", section: "schedule", href: "#schedule" },
   { name: "Contact", section: "contact", href: "#contact" },
 ]
 
@@ -822,7 +822,7 @@ function Hero({
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105 glow-button focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer"
               type="button"
             >
-              View Schedule
+              Live Updates
             </Button>
             <Button
               size="lg"
@@ -1133,7 +1133,7 @@ function LiveUpdates({ updates }: { updates: LiveUpdate[] }) {
     >
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 tracking-tighter bg-gradient-to-r from-red-400 to-yellow-500 bg-clip-text text-transparent">
-          Schedule.
+          Live Updates.
         </h2>
         <p className="text-base sm:text-lg md:text-xl font-light text-white/60 max-w-3xl mx-auto leading-relaxed">
           Tournament news and match results.
