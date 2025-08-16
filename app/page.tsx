@@ -88,7 +88,7 @@ const TEAM_STATS: Record<string, TeamStats> = {
     goalsAgainst: 2,
   },
   "munshi-warriors": { id: "munshi-warriors", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
-  "united-manchester": { id: "united-manchester", played: 1, won: 0, draw: 1, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "united-manchester": { id: "united-manchester", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 1, goalsAgainst: 1 },
   "united-cola": { id: "united-cola", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
 
   // ✅ Seniors
