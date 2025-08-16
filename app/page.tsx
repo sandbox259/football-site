@@ -423,6 +423,20 @@ const LIVE_UPDATES: LiveUpdate[] = [
     type: "result",
   },
 
+  {
+    id: "update-7",
+    time: "17:00",
+    update: "United Manchester 0 - 1 Huma Hammers",
+    type: "result",
+  },
+
+  {
+    id: "update-8",
+    time: "16:30",
+    update: "Munshi Warriors 4 - 0 Oxy Cola",
+    type: "result",
+  },
+
 ]
 
 const NAV_ITEMS: NavItem[] = [
