@@ -71,25 +71,25 @@ const TEAM_STATS: Record<string, TeamStats> = {
   // ✅ Juniors
   "cannine-warriors-juniors": {
     id: "cannine-warriors-juniors",
-    played: 2,
-    won: 0,
-    draw: 2,
-    lost: 0,
-    goalsFor: 1,
-    goalsAgainst: 1,
-  },
-  "huma-hammers": {
-    id: "huma-hammers",
     played: 3,
     won: 1,
     draw: 2,
     lost: 0,
     goalsFor: 3,
-    goalsAgainst: 2,
+    goalsAgainst: 1,
+  },
+  "huma-hammers": {
+    id: "huma-hammers",
+    played: 4,
+    won: 1,
+    draw: 2,
+    lost: 1,
+    goalsFor: 3,
+    goalsAgainst: 4,
   },
   "munshi-warriors": { id: "munshi-warriors", played: 3, won: 1, draw: 2, lost: 0, goalsFor: 6, goalsAgainst: 2 },
-  "united-manchester": { id: "united-manchester", played: 3, won: 0, draw: 2, lost: 1, goalsFor: 1, goalsAgainst: 2 },
-  "united-cola": { id: "united-cola", played: 3, won: 0, draw: 2, lost: 1, goalsFor: 2, goalsAgainst: 6 },
+  "united-manchester": { id: "united-manchester", played: 4, won: 1, draw: 2, lost: 1, goalsFor: 3, goalsAgainst: 2 },
+  "united-cola": { id: "united-cola", played: 4, won: 0, draw: 2, lost: 2, goalsFor: 2, goalsAgainst: 8 },
 
   // ✅ Seniors
   "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
