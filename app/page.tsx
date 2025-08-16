@@ -92,11 +92,11 @@ const TEAM_STATS: Record<string, TeamStats> = {
   "united-cola": { id: "united-cola", played: 4, won: 0, draw: 2, lost: 2, goalsFor: 2, goalsAgainst: 8 },
 
   // ✅ Seniors
-  "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 2, won: 0, draw: 0, lost: 2, goalsFor: 1, goalsAgainst: 6 },
-  "stronger-together-seniors": { id: "stronger-together-seniors", played: 2, won: 1, draw: 0, lost: 1, goalsFor: 3, goalsAgainst: 5 },
-  "hookah-world": { id: "hookah-world", played: 2, won: 0, draw: 0, lost: 2, goalsFor: 0, goalsAgainst: 5 },
-  "lights-light": { id: "lights-light", played: 2, won: 2, draw: 0, lost: 0, goalsFor: 7, goalsAgainst: 1 },
-  "forever-victorians-94": { id: "forever-victorians-94", played: 2, won: 2, draw: 0, lost: 0, goalsFor: 6, goalsAgainst: 0 },
+  "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 4, won: 0, draw: 0, lost: 4, goalsFor: 1, goalsAgainst: 9 },
+  "stronger-together-seniors": { id: "stronger-together-seniors", played: 4, won: 2, draw: 0, lost: 2, goalsFor: 5, goalsAgainst: 8 },
+  "hookah-world": { id: "hookah-world", played: 4, won: 1, draw: 0, lost: 3, goalsFor: 2, goalsAgainst: 7 },
+  "lights-light": { id: "lights-light", played: 4, won: 2, draw: 0, lost: 1, goalsFor: 10, goalsAgainst: 2 },
+  "forever-victorians-94": { id: "forever-victorians-94", played: 4, won: 4, draw: 0, lost: 0, goalsFor: 10, goalsAgainst: 0 },
 }
 
 const TEAMS: Team[] = [
