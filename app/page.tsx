@@ -71,12 +71,12 @@ const TEAM_STATS: Record<string, TeamStats> = {
   // ✅ Juniors
   "cannine-warriors-juniors": {
     id: "cannine-warriors-juniors",
-    played: 1,
+    played: 2,
     won: 0,
-    draw: 1,
+    draw: 2,
     lost: 0,
-    goalsFor: 0,
-    goalsAgainst: 0,
+    goalsFor: 1,
+    goalsAgainst: 1,
   },
   "huma-hammers": {
     id: "huma-hammers",
@@ -89,7 +89,7 @@ const TEAM_STATS: Record<string, TeamStats> = {
   },
   "munshi-warriors": { id: "munshi-warriors", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
   "united-manchester": { id: "united-manchester", played: 1, won: 0, draw: 1, lost: 0, goalsFor: 0, goalsAgainst: 0 },
-  "united-cola": { id: "united-cola", played: 1, won: 0, draw: 1, lost: 0, goalsFor: 1, goalsAgainst: 1 },
+  "united-cola": { id: "united-cola", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
 
   // ✅ Seniors
   "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
@@ -390,8 +390,36 @@ const LIVE_UPDATES: LiveUpdate[] = [
 
   {
     id: "update-2",
-    time: "15:30",
+    time: "16:30",
     update: "Munshi Warriors 1 - 1 United Manchester",
+    type: "result",
+  },
+
+  {
+    id: "update-3",
+    time: "16:30",
+    update: "Huma Hammers 1 - 1 Oxy Cola",
+    type: "result",
+  },
+
+  {
+    id: "update-4",
+    time: "16:30",
+    update: "Cannine United 0 - 0 United Manchester",
+    type: "result",
+  },
+
+  {
+    id: "update-5",
+    time: "16:30",
+    update: "Munshi Warriors 1 - 1 Huma Hammers",
+    type: "result",
+  },
+
+  {
+    id: "update-6",
+    time: "16:30",
+    update: "Canine United 1 - 1 Oxy Cola",
     type: "result",
   },
 
