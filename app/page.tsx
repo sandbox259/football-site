@@ -87,8 +87,8 @@ const TEAM_STATS: Record<string, TeamStats> = {
     goalsFor: 0,
     goalsAgainst: 0,
   },
-  "munshi-warriors": { id: "munshi-warriors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
-  "united-manchester": { id: "united-manchester", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "munshi-warriors": { id: "munshi-warriors", played: 1, won: 0, draw: 1, lost: 0, goalsFor: 1, goalsAgainst: 1 },
+  "united-manchester": { id: "united-manchester", played: 1, won: 0, draw: 1, lost: 0, goalsFor: 1, goalsAgainst: 1 },
   "united-cola": { id: "united-cola", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
 
   // ✅ Seniors
@@ -387,6 +387,14 @@ const LIVE_UPDATES: LiveUpdate[] = [
     update: "Reporting time is 2pm!",
     type: "news",
   },
+
+  {
+    id: "update-2",
+    time: "15:30",
+    update: "Munshi Warriors 1 - 1 United Manchester",
+    type: "result",
+  },
+
 ]
 
 const NAV_ITEMS: NavItem[] = [
