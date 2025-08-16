@@ -80,16 +80,16 @@ const TEAM_STATS: Record<string, TeamStats> = {
   },
   "huma-hammers": {
     id: "huma-hammers",
-    played: 2,
-    won: 0,
+    played: 3,
+    won: 1,
     draw: 2,
     lost: 0,
-    goalsFor: 2,
+    goalsFor: 3,
     goalsAgainst: 2,
   },
-  "munshi-warriors": { id: "munshi-warriors", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
-  "united-manchester": { id: "united-manchester", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 1, goalsAgainst: 1 },
-  "united-cola": { id: "united-cola", played: 2, won: 0, draw: 2, lost: 0, goalsFor: 2, goalsAgainst: 2 },
+  "munshi-warriors": { id: "munshi-warriors", played: 3, won: 1, draw: 2, lost: 0, goalsFor: 6, goalsAgainst: 2 },
+  "united-manchester": { id: "united-manchester", played: 3, won: 0, draw: 2, lost: 1, goalsFor: 1, goalsAgainst: 2 },
+  "united-cola": { id: "united-cola", played: 3, won: 0, draw: 2, lost: 1, goalsFor: 2, goalsAgainst: 6 },
 
   // ✅ Seniors
   "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
