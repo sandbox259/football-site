@@ -20,6 +20,16 @@ interface Team {
   category: "girls" | "juniors" | "seniors"
 }
 
+interface TeamStats {
+  id: string
+  played: number
+  won: number
+  draw: number
+  lost: number
+  goalsFor: number
+  goalsAgainst: number
+}
+
 interface Dignitary {
   id: string
   logo : string
@@ -56,6 +66,38 @@ const HERO_DATA = {
 }
 
 const MOTIVATIONAL_PHRASES = ["Football Memorial Cup 2025"]
+
+const TEAM_STATS: Record<string, TeamStats> = {
+  // ✅ Juniors
+  "cannine-warriors-juniors": {
+    id: "cannine-warriors-juniors",
+    played: 2,
+    won: 1,
+    draw: 1,
+    lost: 0,
+    goalsFor: 4,
+    goalsAgainst: 2,
+  },
+  "huma-hammers": {
+    id: "huma-hammers",
+    played: 2,
+    won: 1,
+    draw: 0,
+    lost: 1,
+    goalsFor: 3,
+    goalsAgainst: 3,
+  },
+  "munshi-warriors": { id: "munshi-warriors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "united-manchester": { id: "united-manchester", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "united-cola": { id: "united-cola", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+
+  // ✅ Seniors
+  "cannine-warriors-seniors": { id: "cannine-warriors-seniors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "stronger-together-seniors": { id: "stronger-together-seniors", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "hookah-world": { id: "hookah-world", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "lights-light": { id: "lights-light", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+  "forever-victorians-94": { id: "forever-victorians-94", played: 0, won: 0, draw: 0, lost: 0, goalsFor: 0, goalsAgainst: 0 },
+}
 
 const TEAMS: Team[] = [
   // Girls Category
@@ -350,6 +392,7 @@ const LIVE_UPDATES: LiveUpdate[] = [
 const NAV_ITEMS: NavItem[] = [
   { name: "Home", section: "home", href: "#home" },
   { name: "Teams", section: "teams", href: "#teams" },
+  { name: "Table", section: "table", href: "#table" }, 
   { name: "Live", section: "schedule", href: "#schedule" },
   { name: "Contact", section: "contact", href: "#contact" },
 ]
@@ -834,7 +877,7 @@ function Hero({
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base md:text-lg rounded-full transition-all duration-300 hover:scale-105 glow-button focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer"
               type="button"
             >
-              View Teams
+              Points Table
             </Button>
           </div>
         </div>
@@ -1101,6 +1144,85 @@ function Organizers() {
   );
 }
 
+function FootballTable({ teams, stats }: { teams: Team[]; stats: Record<string, TeamStats> }) {
+  const calcPoints = (t: TeamStats) => t.won * 3 + t.draw
+  const calcGD = (t: TeamStats) => t.goalsFor - t.goalsAgainst
+
+  const sortedTeams = teams
+    .map((team) => {
+      const s = stats[team.id]
+      return {
+        ...team,
+        ...s,
+        points: s ? calcPoints(s) : 0,
+        gd: s ? calcGD(s) : 0,
+      }
+    })
+    // ✅ Sort by Points → GD → Goals For
+    .sort((a, b) => b.points - a.points || b.gd - a.gd || b.goalsFor - a.goalsFor)
+
+  return (
+    <div className="overflow-x-auto rounded-2xl bg-gray-900/40 backdrop-blur-sm border border-white/10">
+      <table className="w-full text-sm sm:text-base border-collapse">
+        <thead className="bg-white/10 text-white/80">
+          <tr>
+            <th className="p-3 text-left">Team</th>
+            <th className="p-3">P</th>
+            <th className="p-3">W</th>
+            <th className="p-3">D</th>
+            <th className="p-3">L</th>
+            <th className="p-3">GF</th>
+            <th className="p-3">GA</th>
+            <th className="p-3">GD</th>
+            <th className="p-3">Pts</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedTeams.map((t, idx) => (
+            <tr key={t.id} className="hover:bg-white/5 transition-colors">
+              <td className="p-3 flex items-center gap-2">
+                <img src={t.logo} alt={t.name} className="w-6 h-6 rounded-full" />
+                <span>{t.name}</span>
+              </td>
+              <td className="p-3 text-center">{t.played}</td>
+              <td className="p-3 text-center">{t.won}</td>
+              <td className="p-3 text-center">{t.draw}</td>
+              <td className="p-3 text-center">{t.lost}</td>
+              <td className="p-3 text-center">{t.goalsFor}</td>
+              <td className="p-3 text-center">{t.goalsAgainst}</td>
+              <td className="p-3 text-center">{t.gd}</td>
+              <td className="p-3 text-center font-bold text-yellow-400">{t.points}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+function FootballTables({ teams, stats }: { teams: Team[]; stats: Record<string, TeamStats> }) {
+  const juniors = teams.filter((t) => t.category === "juniors")
+  const seniors = teams.filter((t) => t.category === "seniors")
+
+  return (
+    <section id="table" data-section="table" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-center bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+        League Tables.
+      </h2>
+
+      <div className="mb-12">
+        <h3 className="text-2xl font-semibold mb-4 text-left text-white/80">Juniors</h3>
+        <FootballTable teams={juniors} stats={stats} />
+      </div>
+
+      <div>
+        <h3 className="text-2xl font-semibold mb-4 text-left text-white/80">Seniors</h3>
+        <FootballTable teams={seniors} stats={stats} />
+      </div>
+    </section>
+  )
+}
+
 function LiveUpdates({ updates }: { updates: LiveUpdate[] }) {
   const { ref, isVisible } = useIntersectionObserver({ threshold: 0.2 })
 
@@ -1267,7 +1389,7 @@ function Footer() {
 
 // Main Component
 export default function FootballTournament() {
-  const activeSection = useScrollSpy(["home", "teams", "schedule", "contact"])
+  const activeSection = useScrollSpy(["home", "teams", "table","schedule", "contact"])
 
   // Enhanced smooth scrolling function
   const scrollToSection = useCallback((sectionId: string) => {
@@ -1316,7 +1438,7 @@ export default function FootballTournament() {
   }, [scrollToSection])
 
   const handleTeamsClick = useCallback(() => {
-    scrollToSection("teams")
+    scrollToSection("table")
   }, [scrollToSection])
 
   // Prevent scroll issues on mobile
@@ -1367,6 +1489,8 @@ export default function FootballTournament() {
         />
 
         <Teams teams={TEAMS} teamPlayers={TEAM_PLAYERS} />
+
+        <FootballTables teams={TEAMS} stats={TEAM_STATS} />  
 
         <Dignitaries dignitaries={DIGNITARIES} />
 
