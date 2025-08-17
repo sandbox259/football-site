@@ -277,3 +277,20 @@ a:focus-visible {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 }
+
+@keyframes gold-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.9), 0 0 25px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6), 0 0 10px rgba(255, 215, 0, 0.4);
+  }
+}
+
+.table-topper {
+  animation: gold-glow 2s infinite ease-in-out;
+  background: rgba(255, 215, 0, 0.1);
+}

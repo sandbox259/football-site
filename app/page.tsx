@@ -382,12 +382,23 @@ const DIGNITARIES: Dignitary[] = [
 
 const LIVE_UPDATES: LiveUpdate[] = [
   {
-    id: "update-1",
-    time: "19:30",
-    update: "Reporting time is 2pm!",
+    id: "update-0",
+    time: "22:30",
+    update: "Lights and Light Win the Senior Chammpionship!",
     type: "news",
   },
-
+  {
+    id: "update-1",
+    time: "22:30",
+    update: "Cannine United Win the Junior Championship!",
+    type: "news",
+  },
+  {
+    id: "update-001",
+    time: "22:30",
+    update: "Stronger Together Win the Girls Championship!",
+    type: "news",
+  },
   {
     id: "update-2",
     time: "16:30",
@@ -636,7 +647,7 @@ function CountdownTimer({ targetDate }: { targetDate: string }) {
     return (
       <div className="text-center py-6 sm:py-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-fade-in">
-          🎉 Tournament Begins!
+          Tournament Has Ended.
         </h2>
       </div>
     )
@@ -1229,10 +1240,16 @@ function FootballTable({ teams, stats }: { teams: Team[]; stats: Record<string, 
         </thead>
         <tbody>
           {sortedTeams.map((t, idx) => (
-            <tr key={t.id} className="hover:bg-white/5 transition-colors">
+            <tr
+              key={t.id}
+              className={`hover:bg-white/5 transition-colors ${
+                idx === 0 ? "table-topper font-bold text-yellow-400" : ""
+              }`}
+            >
               <td className="p-3 flex items-center gap-2">
                 <img src={t.logo} alt={t.name} className="w-6 h-6 rounded-full" />
                 <span>{t.name}</span>
+                {idx === 0 && <Trophy className="w-5 h-5 text-yellow-400 animate-bounce" />}
               </td>
               <td className="p-3 text-center">{t.played}</td>
               <td className="p-3 text-center">{t.won}</td>
@@ -1241,7 +1258,7 @@ function FootballTable({ teams, stats }: { teams: Team[]; stats: Record<string, 
               <td className="p-3 text-center">{t.goalsFor}</td>
               <td className="p-3 text-center">{t.goalsAgainst}</td>
               <td className="p-3 text-center">{t.gd}</td>
-              <td className="p-3 text-center font-bold text-yellow-400">{t.points}</td>
+              <td className="p-3 text-center font-bold">{t.points}</td>
             </tr>
           ))}
         </tbody>
@@ -1255,7 +1272,11 @@ function FootballTables({ teams, stats }: { teams: Team[]; stats: Record<string,
   const seniors = teams.filter((t) => t.category === "seniors")
 
   return (
-    <section id="table" data-section="table" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <section
+      id="table"
+      data-section="table"
+      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto"
+    >
       <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-center bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
         League Tables.
       </h2>
